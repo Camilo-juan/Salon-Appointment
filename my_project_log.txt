@@ -1,0 +1,3248 @@
+Script started on 2024-10-26 09:53:24+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="138" LINES="16"]
+$ 
+$ use   psql --username=freecodecamp --dbname=postgres
+psql (12.17 (Ubuntu 12.17-1.pgdg22.04+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+postgres=> crr[14G[Keate database salon;
+CREATE DATABASE
+postgres=> crea[15G[K[14G[K[13G[K[12G[Kal[13G[K[12G[Kcreate table customre[32G[K[31G[Kers, appointments [48G, services;
+ERROR:  syntax error at or near ","
+LINE 1: create table customers, appointments, services;
+                              ^
+postgres=> \d[13G[Kc salon
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "salon" as user "freecodecamp".
+salon=> create table customers, appoiin[39G[K[38G[Kntments [45G, services;
+ERROR:  syntax error at or near ","
+LINE 1: create table customers, appointments, services;
+                              ^
+salon=> add tal[15G[Kble,[18G[K customers, appointments, services;
+ERROR:  syntax error at or near "add"
+LINE 1: add table customers, appointments, services;
+        ^
+salon=> create column customir[30G[K[29G[Ker[30G[K[29G[K[28G[K[27G[K[26G[K[25G[K[24G[K[23G[K[22G[21G[K[20G[K[19G[K[18G[K[17G[K[16G[Ktable costumers[30G[K[29G[K[28G[K[27G[K[26G[K[25G[K[24G[K[23G[K[22G[K[21G[20G[K[19G[K[18G[K[17G[K[16G[K[15G[14G[K[13G[K[12G[K[11G[K[10G[K[9G[K-- Tabla de clientes
+salon=> CREATE TABLE customers (
+salon(>     customer_id SERIAL PRIMARY KEY,
+salon(>     name VARCHAR(100) NOT NULL,
+salon(>     phone VARCHAR(15) UNIQUE NOT NULL
+salon(> );
+(
+    service_id SERIAL PRIMARY KEY,
+    service_nCREATE TABLE
+salon=> 
+salon=> -- Tabla de servicios
+ame VARCHAR(100) UNIQUE NOT NULL,
+    price DECIMAsalon=> CREATE TABLE services (
+salon(>     service_id SERIAL PRIMARY KEY,
+salon(>     service_name VARCHAR(100) UNIQUE NOT NULL,
+salon(>     price DECIMAL(10, 2) NOT NULL
+salon(> );
+CREATE TABLE
+salon=> 
+salon=> -- Tabla de citas
+salon=> CREATE TABLE appointments (
+salon(>     appointment_id SERIAL PRIMARY KEY,
+salon(>     customer_id INT REFERENCES customers(customer_id),
+salon(>     service_id INT REFERENCES services(service_id),
+salon(>     appointment_time TIMESTAMP NOT NULL
+salon(> );
+CREATE TABLE
+salon=> \c[10G[Kl[10G[Kd
+                         List of relations
+ Schema |              Name               |   Type   |    Owner     
+--------+---------------------------------+----------+--------------
+ public | appointments                    | table    | freecodecamp
+ public | appointments_appointment_id_seq | sequence | freecodecamp
+ public | customers                       | table    | freecodecamp
+ public | customers_customer_id_seq       | sequence | freecodecamp
+ public | services                        | table    | freecodecamp
+ public | services_service_id_seq         | sequence | freecodecamp
+(6 rows)
+
+salon=> aleter [15G[14G[K[13G[K[12G[K[11G[Kter table servie[26G[Kces rename services_ide[48G[K[47G[K[46G[K[45G[K[44G[K[43G[Ks[43G[Ke_name at [52G[51G[K[50G[Kto name;
+ALTER TABLE
+salon=> alter table appointments alter [39G[38G[K[37G[K[36G[K[35G[K[34G[K[33G[32G[Ks
+salon-> ala[11G[K[10G[K[9G[Kal[10G[K[9G[KALE[11G[KTER COLUMN appointment_time [38G se[40G[K[39G[KA[39G[KSET DATA TYPE VARCHAR
+salon-> ALTER[13G[K[12G[KTER[14G[K[13G[K[12G[KERT[14G[K COLUMN appointmenty[33G[K [33G_tie[36G[Kme RENAME to[47G[K[46G[KTO time; RENAME[44G[P [43G[P [42G[P [41G[P [40G[P [39G[P [39G[PT[13G[P [12G[P [11G[P [10G[P [9G[P [9G[1@r [10G[1@e [11G[1@n [12G[1@a [13G[1@m [14G[1@e [14G[P [13G[P [12G[P [11G[P [10G[P [9G[P [9G[1@R [10G[1@E [11G[1@N [12G[1@A [13G[1@M [14G[1@E  COLUMN appointment_time TO time;
+ERROR:  syntax error at or near "RENAME"
+LINE 3: RENAME COLUMN appointment_time TO time;
+        ^
+salon=> ALTER TABLE appointments
+salon-> ALTER COLUMN existing_column_name SET DATA TYPE VARCHAR,
+salon-> RENAME COLUMN existing_column_name TO time;
+ERROR:  syntax error at or near "RENAME"
+LINE 3: RENAME COLUMN existing_column_name TO time;
+        ^
+salon=> ALTER TABLE appointments
+salon-> ALTER COLUMN appointment_time SET DATA TYPE VARCHAR;
+ALTER TABLE
+salon=> alt[11G[K[10G[K[9G[KALTER TABLE A[21G[Kappointment[31G[Ks[31G[Kts
+salon-> ALTER COLUMN OLUM[19GN[K[18GN[K[17GN[K[16GN[KN[16G[K[15G[K[14G[13G[K[12G[K[11G[K[10G[K[9G[K[9Gr[10Ge[11Gn[12Ga[12G[K[11G[K[10G[K[9G[K[9GR[10GE[11GN[12GA[13GM[14GE[16G[16GC[17GO[18GL[19GU[20GM[21GN[23G[23GA[24GP[25GP[25G[K[24G[K[23G[K[23Ga[24Gp[25Gp[26Go[27Gi[28Gn[29Gt[30Gm[31Ge[32Gn[33Gt[34G_[35Gt[36Gi[37Gm[38Ge[40G[40Gt[41Go[43G[43GT[44GI[45GM[45G[K[44G[K[43G[K[43Gt[44Gi[45Gm[46Ge[47G;
+ALTER TABLE
+salon=> insert into services ([30G[K[29G([29G[K (service_id, name)VALUES[53G[K[52G[K[51G[K[50G[K[49G[K[48G[K VALUES (1,CUT¡¡¡¡[65G[K[64G[K[63G[K[62G[K[61G[K[60G[K[59G[Kcut), (color[70G[K[69G[K[68G[K[67G[K[66G[K2, [68G color), (3, [80G[79G[K[78G[K[77G[K[76G[75G[K[74G[K[73G[K[72G[K[71G[K[70G[K[69G[K[68G[67G[K[66G[K[65G[K[64G[63G[K[62G[K[61G[K[60G[K[59G[Kc[59G[K cut), (col[69G[K[68G[K[67G[K2,color), (3, perm), (4, [91G style), (5,trim);
+ERROR:  column "cut" does not exist
+LINE 1: ...nsert into services (service_id, name) VALUES (1, cut), (2,c...
+                                                             ^
+salon=> INSERT INTO service[27G[K[26G[K[25G[Kices (serci[35G[K[34G[Kvice_id,name[45G[K[44G[K[43G[K[42G[K name) VALUES
+salon-> (1, 'CUR[16G[K[15G[KT[15G[K[14G[Kcut'),
+salon-> (2, 'colot[18G[Kr'),
+salon-> (3, 'perm'),
+salon-> (4, 'style'),
+salon-> (5, trim[16G[K[15G[K[14G[K[13G[K'trim');
+ERROR:  null value in column "price" violates not-null constraint
+DETAIL:  Failing row contains (1, cut, null).
+salon=> INSERT INTO services (service_id, name, price) VALUES
+salon-> (1, 'cut', 15.00),
+salon-> (2, 'color', 20.00),
+salon-> (3, 'perm', 25.00),
+salon-> (4, 'style', 10.00),
+salon-> (5, 'trim', 5.00);
+INSERT 0 5
+salon=> select 
+salon->  [9G* from services;
+ service_id | name  | price 
+------------+-------+-------
+          1 | cut   | 15.00
+          2 | color | 20.00
+          3 | perm  | 25.00
+          4 | style | 10.00
+          5 | trim  |  5.00
+(5 rows)
+
+salon=> select sercivesalon=> select serciv[21G[K[20G[K[19G[K[18G[Kvice_id, name from services;
+ERROR:  column "sevice_id" does not exist
+LINE 1: select sevice_id, name from services;
+               ^
+HINT:  Perhaps you meant to reference the column "services.service_id".
+salon=> select * from services;
+ service_id | name  | price 
+------------+-------+-------
+          1 | cut   | 15.00
+          2 | color | 20.00
+          3 | perm  | 25.00
+          4 | style | 10.00
+          5 | trim  |  5.00
+(5 rows)
+
+salon=> select ssr[18G[K[17G[Kervices, name from services[43G[K[42G[K[41G[K[40G[K[39G[K[38G[K[37G[K[36G[K[35G[34G[K[33G[K[32G[K[31G[K[30G[29G[K[28G[K[27G[K[26G[K[25G[24G[K[23G[K_ide[26G[K, name from[36G[K[35G[K[34G[K[33G[KFROM servie[43G[Kvces[46G[K[45G[K[44G[K[43G[Kces;
+ service_id | name  
+------------+-------
+          1 | cut
+          2 | color
+          3 | perm
+          4 | style
+          5 | trim
+(5 rows)
+
+salon=>Script started on 2024-10-28 17:49:37+00:00 [TERM="xterm-256color" TTY="/dev/pts/5" COLUMNS="66" LINES="16"]
+$ s .s /sh.   salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+4
+You have selected the service: style
+What's your phone number??
+
+./salon.sh: line 52: erificar: command not found
+ERROR:  syntax error at or near ";"
+LINE 1: SELECT name FROM customers WHERE phone = ;
+                                                 ^
+./salon.sh: line 55: syntax error in conditional expression: unexpected token `;'
+./salon.sh: line 55: syntax error near `;'
+./salon.sh: line 55: `  if [[ -z $CUSTOMER_PHONE]]; then'
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+4
+You have selected the service: style
+What's your phone number??
+3123855755
+ERROR:  operator does not exist: character varying = bigint
+LINE 1: SELECT name FROM customers WHERE phone = 3123855755;
+                                               ^
+HINT:  No operator matches the given name and argument types. You might need to add explicit type casts.
+./salon.sh: line 52: syntax error in conditional expression: unexpected token `;'
+./salon.sh: line 52: syntax error near `;'
+./salon.sh: line 52: `  if [[ -z $CUSTOMER_PHONE]]; then'
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+4
+You have selected the service: style
+What's your phone number??
+3123855755
+./salon.sh: line 52: syntax error in conditional expression: unexpected token `;'
+./salon.sh: line 52: syntax error near `;'
+./salon.sh: line 52: `  if [[ -z $CUSTOMER_PHONE]]; then'
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+4
+You have selected the service: style
+What's your phone number??
+3123855755
+./salon.sh: line 52: syntax error in conditional expression: unexpected token `;'
+./salon.sh: line 52: syntax error near `;'
+./salon.sh: line 52: `  if [[ -z '$CUSTOMER_PHONE']]; then'
+$ - . ./SAO   salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+4
+You have selected the service: style
+What's your phone number??
+3
+./salon.sh: line 52: syntax error in conditional expression: unexpected token `;'
+./salon.sh: line 52: syntax error near `;'
+./salon.sh: line 52: `if [[ -z $PHONE_EXIST]]; then'
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+4
+You have selected the service: style
+What's your phone number??
+3123855755
+./salon.sh: line 52: syntax error in conditional expression: unexpected token `;'
+./salon.sh: line 52: syntax error near `;'
+./salon.sh: line 52: `if [[ -z $PHONE_EXIST]]; then'
+$ .salon     /.s  salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+./salon.sh: line 52: [[-z: command not found
+What time would you like your cut, ?
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+I don't have a record for that phone number, what's your name?
+Camilo
+$ .sh  s/sl alon.sh
+sh: 9: .s/salon.sh: not found
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+You have selected the service: cut
+What's your phone number??
+3001234567
+What time would you like your cut, Juan Perez?
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+You have selected the service: cut
+What's your phone number??
+3123855755
+I don't have a record for that phone number, what's yoScript started on 2024-10-28 20:11:43+00:00 [TERM="xterm-256color" TTY="/dev/pts/2" COLUMNS="66" LINES="21"]
+$ ./slal   alon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+4
+You have selected the service: style
+What's your phone number??
+3123855755
+I don't have a record for that phone number, what's your name?
+Juan Camilo
+ERROR:  duplicate key value violates unique constraint "customers_pkey"
+DETAIL:  Key (customer_id)=(2) already exists.
+What time would you like your cut, Juan Camilo?
+./salon.sh
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+I don't have a record for that phone number, what's your name?
+Juan CAmilo     amilo
+What time would you like your cut, Juan Camilo?
+10:30
+$ ./sh alon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+I don't have a record for that phone number, what's your name?
+Juan Camilo
+What time would you like your cut, Juan Camilo?
+./salon.sh
+$ 3
+sh: 4: 3: not found
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+312385575 55
+I don't have a record for that phone number, what's your name?
+u Juan Camilo Auzaque        
+What time would you like your cut, Juan Camilo?
+.s 8 /ssalon.sh        alon.sh
+./salon.sh: line 74: ora: command not found
+ERROR:  syntax error at or near ","
+LINE 1: ...ointments (customer_id, service_id, time) VALUES (, 3, './sa...
+                                                             ^
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+I don't have a record for that phone number, what's your name?
+Juan Camilo
+What time would you like your cut, Juan Camilo?
+10:30
+ERROR:  syntax error at or near ","
+LINE 1: ...ointments (customer_id, service_id, time) VALUES (, 3, '10:3...
+                                                             ^
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+./salon.sh: line 57: syntax error: unexpected end of file
+$ 
+$ .s /salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+./salon.sh: line 57: syntax error: unexpected end of file
+$ .sh   ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+./salon.sh: line 57: syntax error: unexpected end of file
+$ .S /salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+./salon.sh: line 57: syntax error: unexpected end of file
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+./salon.sh: line 55: syntax error: unexpected end of file
+$ ./SALON.S       salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+./salon.sh: line 107: syntax error: unexpected end of file
+$ .s /sl alon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+$ ./SALON     salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+$ ./salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+Your customer ID is: 
+$ 21
+sh: 18: 21: not found
+$ .s /salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+Insert Result: 
+$ .selec    /  /  salon  .sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+I don't have a record for that phone number, what's your name?
+Juan Camilo Auzaque        
+Insert Result: 13
+INSERT 0 1
+$ .s /salon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+I don't have a record for that phone number, what's your name?
+Juan Camio lo
+What time would you like your cut, Juan Camilo?
+10:30
+ERROR:  syntax error at or near "INSERT"
+LINE 2: INSERT 0 1, 3, '10:30');
+        ^
+Your appointment has been scheduled.
+$ .s /salon,s  .sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+3
+You have selected the service: perm
+What's your phone number??
+3123855755
+What time would you like your cut, Juan Camilo?
+10; :30
+Your appointment has been scheduled for 10:30.
+$ ./saol  lon.sh
+~~~~~ MY SALON ~~~~~
+Welcome to My Salon, how can I help you?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+You have selected the service: cut
+What's your phone number??
+3118663221
+I don't have a record for that phone number, what's your name?
+Alicia yolan     Espinosa
+What time would you like your cut, Alicia Espinosa?
+11:00
+ERROR:  syntax error at or near "INSERT"
+LINE 2: INSERT 0 1, 1, '11:00');
+        ^
+There was an error scheduling your appointment.
+$ SELECT * FROM customers WHERE customer_id = $CUSTOMER_ID;
+SELECT * FROM services WHERE service_id = sh: 24: SELECT: not found
+$ $SERVICE_ID_SELECTED;
+sh: 25: SELECT: not found
+$ ^O  equ   ^E
+sh: 26: : not found
+$ ^O
+sh: 27: : not found
+$ exit
+
+Script done on 2024-10-28 21:32:05+00:00 [COMMAND_EXIT_CODE="127"]
+Script started on 2024-10-29 17:34:06+00:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="155" LINES="21"]
+$ psql --username=fre                   exit
+
+Script done on 2024-10-29 17:34:25+00:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2024-10-29 18:46:28+00:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="66" LINES="21"]
+$ psql --username=freecoden capo  mp --dbname=postgres
+psql (12.17 (Ubuntu 12.17-1.pgdg22.04+1))
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+Type "help" for help.
+
+postgres=> \c salon
+SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, compression: off)
+You are now connected to database "salon" as user "freecodecamp".
+salon=> zsalon=> appon[13G[Kintments[20G[K[19G[K[18G[K[17G[K[16G[K[15G[K[14G[K[13G[K[12G[K[11G[K[10G[K[9G[Kselect * rom [21G[20G[K[19G[K[18G[Kfrom appointments;
+ appointment_id | customer_id | service_id |      time       
+----------------+-------------+------------+-----------------
+              2 |           6 |          3 | 10:30
+              4 |           1 |          1 | 11:00
+              5 |          12 |          2 | Alicia Espinosa
+(3 rows)
+
+salon=> delete from c[21G[Kappointments where appointment_id = 5
+salon-> ;
+DELETE 1
+salon=> select * appointmentes[30G[K[29G[Ks [30G[29G[K[28G[K[27G[K[26G[K[25G[K[24G[K[23G[K[22G[K[21G[K[20G[K[19G[K[18G[Kfrom appointments;
+ appointment_id | customer_id | service_id | time  
+----------------+-------------+------------+-------
+              2 |           6 |          3 | 10:30
+              4 |           1 |          1 | 11:00
+(2 rows)
+
+salon=> select * from customers;
+ customer_id |       name        |   phone    
+-------------+-------------------+------------
+           1 | Juan Perez        | 3001234567
+           2 | Ana Rodriguez     | 3107654321
+           3 | Carlos Sanchez    | 3209876543
+           4 | Laura Martinez    | 3156543210
+           5 | Jorge Torres      | 3054321987
+           6 | Juan Camilo       | 3123855755
+          12 | Alicia Espinosa   | 3118663221
+          18 | Tatiana frenandez | 3212324564
+          19 | Paola niño        | 325678987
+          20 | Jenny Rivera      | 3111111123
+          26 | Gutierrez Escobar | 5555555567
+          27 | Fabio niño        | 3454567897
+          28 | Niño Hernandez    | 3453214321
+(13 rows)
+
+salon=> select * from service [30Gs [31G;
+ service_id | name  | price 
+------------+-------+-------
+          1 | cut   | 15.00
+          2 | color | 20.00
+          3 | perm  | 25.00
+          4 | style | 10.00
+          5 | trim  |  5.00
+(5 rows)
+
+salon=> INSERT INTO customers (name, phone) VALUES ('Prueba Nombre ', '1234567890') RETURNING customer_id;
+ customer_id 
+-------------
+          29
+(1 row)
+
+INSERT 0 1
+salon=> -- Muestra la estructura de todas las tablas
+salon=> \dt
+              List of relations
+ Schema |     Name     | Type  |    Owner     
+--------+--------------+-------+--------------
+ public | appointments | table | freecodecamp
+ public | customers    | table | freecodecamp
+ public | services     | table | freecodecamp
+(3 rows)
+
+salon=> 
+salon=> -- Mostrar la estructura de cada tabla
+salon=> -- Cambia 'table_name' por el nombre de cada tabla que qui eras inspeccionar
+salon=> \dt customers
+             List of relations
+ Schema |   Name    | Type  |    Owner     
+--------+-----------+-------+--------------
+ public | customers | table | freecodecamp
+(1 row)
+
+salon=> \dt appointments
+              List of relations
+ Schema |     Name     | Type  |    Owner     
+--------+--------------+-------+--------------
+ public | appointments | table | freecodecamp
+(1 row)
+
+salon=> \dt services
+            List of relations
+ Schema |   Name   | Type  |    Owner     
+--------+----------+-------+--------------
+ public | services | table | freecodecamp
+(1 row)
+
+salon=> 
+salon=> -- Seleccionar todos los datos de cada tabla
+salon=> SELECT * FROM customers;
+[?1049h[22;0;0t[?1h= customer_id |       name        |   phone    
+-------------+-------------------+------------
+           1 | Juan Perez        | 3001234567
+           2 | Ana Rodriguez     | 3107654321
+           3 | Carlos Sanchez    | 3209876543
+           4 | Laura Martinez    | 3156543210
+           5 | Jorge Torres      | 3054321987
+           6 | Juan Camilo       | 3123855755
+          12 | Alicia Espinosa   | 3118663221
+          18 | Tatiana frenandez | 3212324564
+          19 | Paola niño        | 325678987
+          20 | Jenny Rivera      | 3111111123
+          26 | Gutierrez Escobar | 5555555567
+          27 | Fabio niño        | 3454567897
+          28 | Niño Hernandez    | 3453214321
+          29 | Prueba Nombre     | 1234567890
+          30 | Teresa Perez      | 3123443412
+          31 | Pipe Patricio     | 2222222222
+          32 | Felipe nuñez      | 3678976754
+          33 | Teressa perez     | 3435416345
+:[K[K:[K[KExamine: [KLL[KEE[KCC[KTT[K  [K**[K  [KFF[KRR[KOO[KMM[K  [Kaa[Kpp[Kpp[Koo[Kii[Knn[Ktt[Kmm[Kee[Knn[Ktt[Kss[K;;[K[K[7mLECT: No such file or directory  (press RETURN)[27m[21;1H[K[K[7mFROM: No such file or directory  (press RETURN)[27m[21;1H[K[K[7mappointments: No such file or directory  (press RETURN)[27m[21;1H[K[KExamine: [KSS[KEE[KCC[KTT[K  [K**[K  [KFF[KRR[KOO[KMM[K  [Kss[Kee[Krr[Kvv[Kii[Kcc[Kee[Kss[K;;[K[K[7mSECT: No such file or directory  (press RETURN)[27m[21;1H[K[K[7mFROM: No such file or directory  (press RETURN)[27m[21;1H[K[K[7mservices: No such file or directory  (press RETURN)[27m[21;1H[K[K-[K--[K  [KSS[Kii[K  [Ktt[Kii[Kee[Knn[Kee[Kss[K  [Kmm[Káá[Kss[K  [Ktt[Kaa[Kbb[Kll[Kaa[Kss[K,,[K  [Kaa[Kgg[Krr[Kéé[Kgg[Kaa[Kll[Kaa[Kss[K  [Kaa[Kqq[Kuu[Kíí[K  [Kss[Kii[Kgg[Kuu[Kii[Kee[Knn[Kdd[Koo[K  [Kee[Kll[K  [Kmm[Kii[Kss[Kmm[Koo[K  [Kpp[Kaa[Ktt[Krr[Kóó[Knn[K[K aquí siguiendo el mismo patrónESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[K[KESCOBESCOAESCOAESCOAESCOAESCOAESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[K[KOAESCOAESCOAESCOAESCOAESCOAESCOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[K[KESCOAESCOAESCOAESCOAESCOAESCOAESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[K[KOAESCOAESCOAESCOAESCOAESCOAESCOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[K[KESCOAESCOAESCOAESCOAESCOAESCOAESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[K[KOAESCOAESCOAESCOAESCOAESCOAESCOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[K[KESCOAESCOAESCOAESCOAESCOAESCOAESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[K[KOAESCOAESCOAESCOAESCOAESCOAESCOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[K[KESCOAESCOAESCOAESCOAESCOAESCOAESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[K[KOAESCOAESCOAESCOAESCOAESCOAESCOO[KAA[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KAA[KESCESC[KOO[KAA[K[KESCOBESCOBESCOBESCOBESCOAESCOAESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[K[KOAESCOAESCOAESCOAESCOAESCOAESCOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[K[KESCOAESCOAESCOAESCOAESCOAESCOAESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[K[KOAESCOAESCOAESCOAESCOAESCOAESCOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[K[KESCOAESCOAESCOAESCOAESCOAESCOAESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[K[KOAESCOAESCOAESCOAESCOAESCOAESCOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[K[KESCOAESCOAESCOAESCOAESCOAESCOAESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[KOO[KAA[KESCESC[K[KOAESCOAESCOAESCOAESCOAESCOAESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[K[KOBESCOBESCOBESCOBESCOBESCOBESCOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB[K[KESCOBESCOBESCOBESCOBESCOBESCOBESCESC[KOO[KBB[KESCESC[KOO[KBB[KESCESC[KOO[KBB...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+[7mexamples.txt (file 2 of 5)[27m[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+2
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+2
+
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+2
+
+What's your phone number?
+:[K...skipping...
+// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+2
+
+What's your phone number?
+555-555-5555
+:[K[H[2J[H[H[2J[H// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+2
+
+What's your phone number?
+:[K[H[2J[H[H[2J[H// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+2
+
+:[K[H[2J[H[H[2J[H// Here are two examples of the output of a passing script:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+10
+
+I could not find that service. What would you like today?
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+1
+
+What's your phone number?
+555-555-5555
+
+I don't have a record for that phone number, what's your name?
+Fabio
+
+What time would you like your cut, Fabio?
+10:30
+
+I have put you down for a cut at 10:30, Fabio.
+
+
+// Next example:
+
+~~~~~ MY SALON ~~~~~
+
+Welcome to My Salon, how can I help you?
+
+1) cut
+2) color
+3) perm
+4) style
+5) trim
+2
+:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KWhat's your phone number?
+:[K[K [KESCESC[KOO[KBB[K555-555-5555
+:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KWhat time would you like your color, Fabio?
+:[K[K [KESCESC[KOO[KBB[K11am
+:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KI have put you down for a color at 11am, Fabio.
+[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KAA[K[HM2) color
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM1) cut
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HMWelcome to My Salon, how can I help you?
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM~~~~~ MY SALON ~~~~~
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM// Here are two examples of the output of a passing script:
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KWhat's your phone number?
+:[K[K [KESCESC[KOO[KBB[K555-555-5555
+:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KWhat time would you like your color, Fabio?
+:[K[K [KESCESC[KOO[KBB[K11am
+:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KI have put you down for a color at 11am, Fabio.
+[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KAA[K[HM2) color
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM1) cut
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HMWelcome to My Salon, how can I help you?
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM~~~~~ MY SALON ~~~~~
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM// Here are two examples of the output of a passing script:
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KWhat's your phone number?
+:[K[K [KESCESC[KOO[KBB[K555-555-5555
+:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KWhat time would you like your color, Fabio?
+:[K[K [KESCESC[KOO[KBB[K11am
+:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KI have put you down for a color at 11am, Fabio.
+[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KAA[K[HM2) color
+[46;1H[K:[K[K [KESCESC[KOO[KBB[KI have put you down for a color at 11am, Fabio.
+[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KAA[K[HM2) color
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM1) cut
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HMWelcome to My Salon, how can I help you?
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM~~~~~ MY SALON ~~~~~
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM// Here are two examples of the output of a passing script:
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KWhat's your phone number?
+:[K[K [KESCESC[KOO[KBB[K555-555-5555
+:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KWhat time would you like your color, Fabio?
+:[K[K [KESCESC[KOO[KBB[K11am
+:[K[K [KESCESC[KOO[KBB[K
+:[K[K [KESCESC[KOO[KBB[KI have put you down for a color at 11am, Fabio.
+[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END) - Next: my_project_log.txt[27m[K[K [KESCESC[KOO[KAA[K[HM2) color
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM1) cut
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HMWelcome to My Salon, how can I help you?
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM~~~~~ MY SALON ~~~~~
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[HM// Here are two examples of the output of a passing script:
+[46;1H[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K[?1l>[?1049l[23;0;0tsalon=> -- Mostrar la estructura de la tabla customers
+salon=> \d customers
+pointments
+\d appointments
+
+-- Mostrar la estructura de la tabla services
+\d services[?1049h[22;0;0t[?1h=                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[7m(END)[27m[K[K[K[7m(END)[27m[K[K-[K--[K  [KMM[Koo[Kss[Ktt[Krr[Kaa[Krr[K  [Kll[Kaa[K  [Kee[Kss[Ktt[Krr[Kuu[Kcc[Ktt[Kuu[Krr[Kaa[K  [Kdd[Kee[K  [Kll[Kaa[K  [Ktt[Kaa[Kbb[Kll[Kaa[K  [Kaa[Kpp[Kpp[Koo[Kii[Knn[Ktt[Kmm[Kee[Knn[Ktt[Kss...skipping...
+                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[K[7mThere is no -- Mostrar la estructura de la tabla appointments option  (press RETURN)[27m[46;1H[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[K[K[7m(END)[27m[K[K[K[7m(END)[27m[K[K[7m(END)[27m[K[K[K[7m(END)[27m[K[K[K[7m(END)[27m[K[K[7m(END)[27m[K[K[7m(END)[27m[K[K/[K[K[7mNo previous regular expression  (press RETURN)[27m[46;1H[K[K[7mNo next tag  (press RETURN)[27m[46;1H[K[Kset mark: ...skipping...
+                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[K/[K[K[7mNo previous regular expression  (press RETURN)[27m[46;1H[K[K[7mNo next tag  (press RETURN)[27m[46;1H[K[K-[Klog file: [K[K[7mNo log file  (press RETURN)[27m[46;1H[K[K[7m(END)[27m[K[K-[K--[K  [KMM[Koo[Kss[Ktt[Krr[Kaa[Krr[K  [Kll[Kaa[K  [Kee[Kss[Ktt[Krr[Kuu[Kcc[Ktt[Kuu[Krr[Kaa[K  [Kdd[Kee[K  [Kll[Kaa[K  [Ktt[Kaa[Kbb[Kll[Kaa[K  [Kss[Kee[Krr[Kvv[Kii[Kcc[Kee[Kss[K[7mThere is no -- Mostrar la estructura de la tabla services option  (press RETURN)[27m[46;1H[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[K[K[7m(END)[27m[K[K[K[7m(END)[27m[K[K-[Klog file: [Kee[Krr[Kvv[Kii[Kcc[Kee[Kss[K[K[7m(END)[27m[K[K[K[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+:[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey :[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+:[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+:[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+:[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+:[K[K [KESCESC[KOO[KBB[K    "customers_pkey" PRIMARY KEY, btree (customer_id)
+:[K[K [KESCESC[KOO[KBB[K    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+:[K[K [KESCESC[KOO[KBB[KReferenced by:
+:[K[K [KESCESC[KOO[KBB[K    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey :[K[K [KESCESC[KOO[KBB[K" FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+:[K[K [KESCESC[KOO[KBB[K
+[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[HM--------------------------------------------
+[12;1H[K:[K[K [KESCESC[KOO[KAA[K[HM-------------+------------------------+-----------+----------+----[12;1H[K:[K[K [KESCESC[KOO[KAA[K[HM                Default                     
+[12;1H[K:[K[K [KESCESC[KOO[KAA[K[HM   Column    |          Type          | Collation | Nullable |    [12;1H[K:[K[K [KESCESC[KOO[KAA[K[HM"
+[12;1H[K:[K[K [KESCESC[KOO[KAA[K[HM                                           Table "public.customers[12;1H[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[K [KESCESC[KOO[KAA[K[K:[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+:[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+:[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers "
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---- --------------------------------------------
+ customer_id | integer                |           | not null | nex tval('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey " FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+----- -------------------------------------------
+ customer_id | integer                |           | not null | next val('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey"  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+------- -----------------------------------------
+ customer_id | integer                |           | not null | nextva l('customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" F OREIGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+---------- --------------------------------------
+ customer_id | integer                |           | not null | nextval(' customers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FORE IGN KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+------------- -----------------------------------
+ customer_id | integer                |           | not null | nextval('cus tomers_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN  KEY (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+----------------- -------------------------------
+ customer_id | integer                |           | not null | nextval('custome rs_customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY  (customer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                     Default                     
+-------------+------------------------+-----------+----------+-------------------- ----------------------------
+ customer_id | integer                |           | not null | nextval('customers_ customer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (c ustomer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    De fault                     
+-------------+------------------------+-----------+----------+---------------------- --------------------------
+ customer_id | integer                |           | not null | nextval('customers_cu stomer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (cus tomer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Defa ult                     
+-------------+------------------------+-----------+----------+------------------------ ------------------------
+ customer_id | integer                |           | not null | nextval('customers_cust omer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (custo mer_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Defau lt                     
+-------------+------------------------+-----------+----------+------------------------- -----------------------
+ customer_id | integer                |           | not null | nextval('customers_custo mer_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (custom er_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Defaul t                     
+-------------+------------------------+-----------+----------+-------------------------- ----------------------
+ customer_id | integer                |           | not null | nextval('customers_custom er_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (custome r_id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+--------------------------- ---------------------
+ customer_id | integer                |           | not null | nextval('customers_custome r_id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer _id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+---------------------------- --------------------
+ customer_id | integer                |           | not null | nextval('customers_customer _id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_ id) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+----------------------------- -------------------
+ customer_id | integer                |           | not null | nextval('customers_customer_ id_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_i d) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+------------------------------ ------------------
+ customer_id | integer                |           | not null | nextval('customers_customer_i d_seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id ) REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+------------------------------- -----------------
+ customer_id | integer                |           | not null | nextval('customers_customer_id _seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id)  REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+-------------------------------- ----------------
+ customer_id | integer                |           | not null | nextval('customers_customer_id_ seq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id)  REFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+--------------------------------- ---------------
+ customer_id | integer                |           | not null | nextval('customers_customer_id_s eq'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id) R EFERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+---------------------------------- --------------
+ customer_id | integer                |           | not null | nextval('customers_customer_id_se q'::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id) RE FERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+----------------------------------- -------------
+ customer_id | integer                |           | not null | nextval('customers_customer_id_seq '::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id) REF ERENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+------------------------------------ ------------
+ customer_id | integer                |           | not null | nextval('customers_customer_id_seq' ::regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id) REFE RENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+------------------------------------- -----------
+ customer_id | integer                |           | not null | nextval('customers_customer_id_seq': :regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id) REFER ENCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+-------------------------------------- ----------
+ customer_id | integer                |           | not null | nextval('customers_customer_id_seq':: regclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id) REFERE NCES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[H[2J[H[H[2J[H                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+--------------------------------------- ---------
+ customer_id | integer                |           | not null | nextval('customers_customer_id_seq'::r egclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id) REFEREN CES customers(customer_id)
+
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[1m~[0m
+[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KBB[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K [KESCESC[KOO[KAA[K[K[7m(END)[27m[K[K[?1l>[?1049l[23;0;0tsalon=> 
+salon=> \d customer
+Did not find any relation named "customer".
+salon=> \d customers
+[?1049h[22;0;0t[?1h=                                           Table "public.customers"
+   Column    |          Type          | Collation | Nullable |                    Default                      
+-------------+------------------------+-----------+----------+--------------------------------------- ---------
+ customer_id | integer                |           | not null | nextval('customers_customer_id_seq'::r egclass)
+ name        | character varying(100) |           | not null | 
+ phone       | character varying(15)  |           | not null | 
+Indexes:
+    "customers_pkey" PRIMARY KEY, btree (customer_id)
+    "customers_phone_key" UNIQUE CONSTRAINT, btree (phone)
+Referenced by:
+    TABLE "appointments" CONSTRAINT "appointments_customer_id_fkey" FOREIGN KEY (customer_id) REFEREN CES customers(customer_id)
+
+[7m(END)[27m[K[K[?1l>[?1049l[23;0;0tsalon=> [9G\d customers[20G[K[19G[K[18G[K[17G[K[16G[K[15G[K[14G[K[13G[K[12G[Kservices
+[?1049h[22;0;0t[?1h=                                          Table "public.services"
+   Column   |          Type          | Collation | Nullable |                   Default                     
+------------+------------------------+-----------+----------+---------------------------------------- ------
+ service_id | integer                |           | not null | nextval('services_service_id_seq'::regc lass)
+ name       | character varying(100) |           | not 
